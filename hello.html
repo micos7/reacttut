@@ -11,6 +11,16 @@
     <script>
       var a = React.DOM.a
       var h1 = React.DOM.h1
+
+      var AppComponent = React.createClass({
+        render: function(){
+          return React.DOM.div(null,
+          React.createElement(HelloComponent),
+          React.createElement(HelloComponent),
+          React.createElement(HelloComponent)
+          )
+        }
+      })
     var HelloComponent = React.createClass({
       render: function(){
         return h1(null,
@@ -19,7 +29,7 @@
       }
     })
 
-    ReactDOM.render(React.createElement(HelloComponent),document.getElementById('root'))
+    ReactDOM.render(React.createElement(AppComponent),document.getElementById('root'))
     </script>
   </body>
 </html>
