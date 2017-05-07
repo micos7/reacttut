@@ -9,13 +9,13 @@
   <body>
     <div id="root"></div>
     <script>
+      var a = React.DOM.a
+      var h1 = React.DOM.h1
     var HelloComponent = React.createClass({
       render: function(){
-        return React.DOM.ul(null,
-        React.DOM.li(null,'one'),
-        React.DOM.li(null,'two'),
-        React.DOM.li(null,'three')
-        )
+        return h1(null,
+        a(
+          {href: 'https://facebook.github.io/react/docs/hello-world.html'},'Hello'))
       }
     })
 
