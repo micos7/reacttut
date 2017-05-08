@@ -12,23 +12,30 @@
       var a = React.DOM.a
       var h1 = React.DOM.h1
 
-      var AppComponent = React.createClass({
-        render: function(){
-          return React.DOM.div(null,
-          React.createElement(HelloComponent,{title: 'Google',link: 'https://google.com',color: 'red'}),
-          React.createElement(HelloComponent,{title: 'Instagram',link: 'https://instagram.com',color: 'blue'}),
-          React.createElement(HelloComponent,{title: 'Twitter',link: 'https://twitter.com',color: 'orange'})
-          )
-        }
-      })
-    var HelloComponent = React.createClass({
+      React.DOM.h1 = React.createFactory(h1)
+
+      var Hello = React.createClass({
       render: function(){
         return h1(null,
         a( {href: this.props.link,style: {color: this.props.color}},this.props.title))
       }
     })
 
-    ReactDOM.render(React.createElement(AppComponent),document.getElementById('root'))
+      var HelloFactory = React.createFactory(Hello);
+
+      var App = React.createClass({
+        render: function(){
+          return React.createElement('div',null,
+          HelloFactory({title: 'Google',link: 'https://google.com',color: 'red'}),
+          HelloFactory({title: 'Instagram',link: 'https://instagram.com',color: 'blue'}),
+          HelloFactory({title: 'Twitter',link: 'https://twitter.com',color: 'orange'})
+          )
+        }
+      });
+      
+    
+
+    ReactDOM.render(React.createElement(App),document.getElementById('root'))
     </script>
   </body>
 </html>
