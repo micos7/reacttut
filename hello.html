@@ -5,37 +5,37 @@
     <title>Hello World</title>
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      var a = React.DOM.a
-      var h1 = React.DOM.h1
-
-      React.DOM.h1 = React.createFactory(h1)
+    <script type="text/babel">
+      var a = React.DOM.a;
+      var h1 = React.DOM.h1;
 
       var Hello = React.createClass({
-      render: function(){
-        return h1(null,
-        a( {href: this.props.link,style: {color: this.props.color}},this.props.title))
+      render: function() {
+        var styles = {color: this.props.color};
+        return <h1><a href={this.props.link} style={styles}>{this.props.title}</a></h1>    
       }
-    })
+    });
 
-      var HelloFactory = React.createFactory(Hello);
 
       var App = React.createClass({
         render: function(){
-          return React.createElement('div',null,
-          HelloFactory({title: 'Google',link: 'https://google.com',color: 'red'}),
-          HelloFactory({title: 'Instagram',link: 'https://instagram.com',color: 'blue'}),
-          HelloFactory({title: 'Twitter',link: 'https://twitter.com',color: 'orange'})
-          )
+          return (
+            <div>
+              <Hello title="Google" link="https://google.com" color="red" />
+              <Hello title="Instagram" link="https://instagram.com" color="green" />
+              <Hello title="Twitter" link="https://twitter.com" color="blue" />
+            </div>
+            )
         }
-      });
+      })
       
     
 
-    ReactDOM.render(React.createElement(App),document.getElementById('root'))
+    ReactDOM.render(<App />,document.getElementById('root'))
     </script>
   </body>
 </html>
