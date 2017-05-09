@@ -1,16 +1,14 @@
- var a = React.DOM.a;
-      var h1 = React.DOM.h1;
 
-      var Hello = React.createClass({
-      render: function() {
-        var styles = {color: this.props.color};
-        return <h1><a href={this.props.link} style={styles}>{this.props.title}</a></h1>    
-      }
-    });
+    class Hello extends React.Component {
+        render(){
+            var styles = {color: this.props.color};
+            return <h1><a href={this.props.link} style={styles}>{this.props.title}</a></h1>
+        }
+    }
 
 
-      var App = React.createClass({
-        render: function(){
+    class App extends React.Component {
+        render(){
           return (
             <div>
             {this.props.children}
@@ -20,8 +18,8 @@
             </div>
             )
         }
-      })
-      
+    }
+
     
 
-    ReactDOM.render(<App>Testing</App>,document.getElementById('root'))
+    ReactDOM.render(<App></App>,document.querySelector('#root'))
