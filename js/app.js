@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World</title>
-    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel">
-      var a = React.DOM.a;
+ var a = React.DOM.a;
       var h1 = React.DOM.h1;
 
       var Hello = React.createClass({
@@ -25,6 +13,7 @@
         render: function(){
           return (
             <div>
+            {this.props.children}
               <Hello title="Google" link="https://google.com" color="red" />
               <Hello title="Instagram" link="https://instagram.com" color="green" />
               <Hello title="Twitter" link="https://twitter.com" color="blue" />
@@ -35,7 +24,4 @@
       
     
 
-    ReactDOM.render(<App />,document.getElementById('root'))
-    </script>
-  </body>
-</html>
+    ReactDOM.render(<App>Testing</App>,document.getElementById('root'))
