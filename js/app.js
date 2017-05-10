@@ -1,25 +1,32 @@
-
-    class Hello extends React.Component {
-        render(){
-            var styles = {color: this.props.color};
-            return <h1><a href={this.props.link} style={styles}>{this.props.title}</a></h1>
+class Counter extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            count : 0
         }
+
+        this.increment = this.increment.bind(this)
+        this.decrement = this.decrement.bind(this)
     }
 
-
-    class App extends React.Component {
-        render(){
-          return (
-            <div>
-            {this.props.children}
-              <Hello title="Google" link="https://google.com" color="red" />
-              <Hello title="Instagram" link="https://instagram.com" color="green" />
-              <Hello title="Twitter" link="https://twitter.com" color="blue" />
-            </div>
-            )
-        }
+    increment() {
+        this.setState({count: this.state.count+1})
     }
 
-    
+    decrement() {
+        if(this.state.count > 0){
+            this.setState({count: this.state.count-1})
+        } 
+    }
 
-    ReactDOM.render(<App></App>,document.querySelector('#root'))
+    render() {
+        return <div>
+            <h1>You have {this.state.count} friends!</h1>
+            <button onClick={this.increment} >Add new friend</button>
+            <button onClick={this.decrement}>Remove friend</button>
+        </div>
+         
+    }
+}
+
+ReactDOM.render(<Counter></Counter>,document.getElementById('root'))
