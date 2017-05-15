@@ -1,3 +1,4 @@
+
 class Counter extends React.Component {
     constructor(props){
         super(props)
@@ -10,13 +11,19 @@ class Counter extends React.Component {
     }
 
     increment() {
-        this.setState({count: this.state.count+1})
+        this.setState(function(prevState,props){
+            return {
+                count: prevState.count + 1
+            }
+        })
     }
 
     decrement() {
-        if(this.state.count > 0){
-            this.setState({count: this.state.count-1})
-        } 
+         this.setState(function(prevState,props){
+            return {
+                count: prevState.count > 0 ? prevState.count - 1 : 0
+            }
+        })
     }
 
     render() {
@@ -27,6 +34,8 @@ class Counter extends React.Component {
         </div>
          
     }
+
+    
 }
 
 ReactDOM.render(<Counter></Counter>,document.getElementById('root'))
